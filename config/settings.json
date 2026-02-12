@@ -1,0 +1,28 @@
+{
+    "version": "0.1.0-phase1",
+    "safety": {
+        "max_auto_permission": 1,
+        "sandbox_mode": false,
+        "require_approval_for": [
+            "delete",
+            "system_command",
+            "network_request"
+        ]
+    },
+    "logging": {
+        "level": "INFO",
+        "log_dir": "logs",
+        "max_log_size_mb": 100,
+        "keep_logs_days": 30
+    },
+    "paths": {
+        "workspace": "C:\\OpenClaw\\workspace",
+        "data_dir": "C:\\OpenClaw\\data",
+        "log_dir": "C:\\OpenClaw\\logs"
+    },
+    "rate_limits": {
+        "file_operations_per_minute": 100,
+        "max_task_depth": 10,
+        "max_runtime_seconds": 3600
+    }
+}
