@@ -1,4 +1,4 @@
-# Ollama Installation Guide for OpenClaw Phase 2
+# Ollama Installation Guide for Baronet Phase 2
 
 ## Step 1: Download Ollama
 
@@ -42,11 +42,11 @@ Type: "Hello, how are you?"
 
 The model should respond. Type `/bye` to exit.
 
-## Step 6: Verify from OpenClaw
+## Step 6: Verify from Baronet
 
-Navigate to OpenClaw and test:
+Navigate to Baronet and test:
 ```powershell
-cd C:\OpenClaw
+cd C:\Baronet
 python -c "import ollama; print(ollama.list())"
 ```
 

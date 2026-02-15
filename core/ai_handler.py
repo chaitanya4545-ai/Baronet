@@ -1,5 +1,5 @@
 """
-OpenClaw AI Command Handler
+Baronet AI Command Handler
 Integrates AI parsing with safety pipeline
 """
 from typing import Dict, Any, Optional

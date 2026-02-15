@@ -1,3 +1,3 @@
 @echo off
-REM OpenClaw CLI Launcher
+REM Baronet CLI Launcher
 python -m core.cli %*

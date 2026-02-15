@@ -1,8 +1,8 @@
-# OpenClaw v0.1.0-phase1
+# Baronet
 
-**Your Personal Automation Engine**
+**AI-Powered File Automation with Military-Grade Safety**
 
-OpenClaw is a powerful, safe, and expandable automation system that gives you direct control over your machine through a clean command-line interface.
+Baronet is a production-ready file automation system that combines natural language processing with a 6-layer safety pipeline to execute file operations safely.
 
 ## 🎯 What You Built
 
@@ -10,9 +10,9 @@ OpenClaw is a powerful, safe, and expandable automation system that gives you di
 ```
 You (Supreme Commander)
     ↓
-OpenClaw CLI (Command Interface)
+Baronet CLI (Command Interface)
     ↓
-OpenClaw Core (Central Nervous System)
+Baronet Core (Central Nervous System)
     ↓
 Modules (File, Web, System - expandable)
     ↓
@@ -31,13 +31,13 @@ Execution Layer (OS, Browser, Scripts)
 
 ## 📦 Installation
 
-**Already installed!** All dependencies are set up in `C:\OpenClaw`
+**Already installed!** All dependencies are set up in `C:\Baronet`
 
 ## 🚀 Quick Start
 
-### Open PowerShell/Command Prompt and navigate to OpenClaw:
+### Open PowerShell/Command Prompt and navigate to Baronet:
 ```powershell
-cd C:\OpenClaw
+cd C:\Baronet
 ```
 
 ### Check system status:
@@ -105,7 +105,7 @@ python -m core.cli resume
 - **DANGEROUS** (3): Delete operations (requires confirmation)
 
 ### Automatic Protections
-- ✅ **Workspace Sandboxing**: All file operations stay in `C:\OpenClaw\workspace`
+- ✅ **Workspace Sandboxing**: All file operations stay in `C:\Baronet\workspace`
 - ✅ **Automatic Backups**: Deleted files saved to `.backups` folder
 - ✅ **Rate Limiting**: Max 100 operations per minute (configurable)
 - ✅ **Comprehensive Logging**: Every action logged with timestamp
@@ -129,9 +129,9 @@ Edit `config/settings.json` to adjust:
 ## 📁 Directory Structure
 
 ```
-C:\OpenClaw\
+C:\Baronet\
 ├── core/
-│   ├── openclaw.py      # Main controller
+│   ├── Baronet.py      # Main controller
 │   ├── cli.py           # Command interface
 │   ├── logger.py        # Logging system
 │   └── safety.py        # Safety guards
@@ -140,7 +140,7 @@ C:\OpenClaw\
 ├── config/
 │   └── settings.json    # Configuration
 ├── logs/
-│   ├── openclaw_YYYY-MM-DD.log  # Daily logs
+│   ├── Baronet_YYYY-MM-DD.log  # Daily logs
 │   └── commands.log     # Command history
 ├── workspace/           # Safe workspace for files
 └── data/                # Persistent data storage
@@ -155,14 +155,14 @@ type logs\commands.log
 
 **View today's detailed log:**
 ```powershell
-type logs\openclaw_2026-02-12.log
+type logs\Baronet_2026-02-12.log
 ```
 
 ## 🎓 How to Use with Antigravity (Me)
 
 ### Method 1: Ask Me to Generate Commands
 ```
-You: "Hey Antigravity, tell OpenClaw to organize my test files"
+You: "Hey Antigravity, tell Baronet to organize my test files"
 Me: Here's the command to run:
     python -m core.cli file <command>
 You: [Copy and paste to execute]
@@ -171,14 +171,14 @@ You: [Copy and paste to execute]
 ### Method 2: Describe What You Need
 ```
 You: "I need to create 10 test files with different content"
-Me: [Writes a Python script that uses OpenClaw]
+Me: [Writes a Python script that uses Baronet]
 You: [Run the script]
 ```
 
 ### Your Role: Supreme Commander
 - You have **direct** control - every command requires your execution
 - I (Antigravity) am your **advisor** - I design, suggest, and help debug
-- OpenClaw is your **executor** - It safely runs the commands you approve
+- Baronet is your **executor** - It safely runs the commands you approve
 
 ## 🔧 Current Limitations (Phase 1)
 
@@ -201,24 +201,24 @@ You: [Run the script]
 
 1. **Ollama Integration** - Natural language understanding
    ```
-   "OpenClaw, organize downloads by type" → Automatically parsed and executed
+   "Baronet, organize downloads by type" → Automatically parsed and executed
    ```
 
 2. **Web Automation Module** - Browser control for your content workflows
    ```
-   "OpenClaw, scrape today's top AI posts from Reddit"
+   "Baronet, scrape today's top AI posts from Reddit"
    ```
 
 3. **Content Automation** - Perfect for your YouTube Shorts workflow
    ```
-   "OpenClaw, process new videos and add captions"
+   "Baronet, process new videos and add captions"
    ```
 
 ## 🐛 Troubleshooting
 
 **Problem: "Module not found" errors**
 ```powershell
-cd C:\OpenClaw
+cd C:\Baronet
 pip install -r requirements.txt
 ```
 
@@ -228,7 +228,7 @@ pip install -r requirements.txt
 python -m core.cli status
 
 # Check logs
-type logs\openclaw_2026-02-12.log | select -last 50
+type logs\Baronet_2026-02-12.log | select -last 50
 ```
 
 **Problem: Emergency stop activated**
@@ -288,7 +288,7 @@ Based on the critical review feedback, here's what was chosen:
 
 ## 🚀 Ready to Expand
 
-OpenClaw Phase 1 is **complete and operational**. You now have:
+Baronet Phase 1 is **complete and operational**. You now have:
 
 - ✅ A working automation engine
 - ✅ Safe, sandboxed execution
