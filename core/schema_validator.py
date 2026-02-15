@@ -1,5 +1,5 @@
 """
-OpenClaw Schema Validator
+Baronet Schema Validator
 Deterministic validation layer - NO AI judgment
 CRITICAL: Confidence is NOT safety
 """

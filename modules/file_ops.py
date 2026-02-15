@@ -1,5 +1,5 @@
 """
-OpenClaw File Operations Module
+Baronet File Operations Module
 Safe file operations with sandboxing and validation
 HARDENED: Atomic writes, input validation, crash consistency
 """
@@ -26,7 +26,7 @@ class FileOperations:
     # HARDENING: Protected files (cannot be deleted)
     PROTECTED_FILES = ['.gitkeep', 'README.md', 'config.json', 'settings.json']
     
-    def __init__(self, workspace: str = "C:\\OpenClaw\\workspace"):
+    def __init__(self, workspace: str = "C:\\Baronet\\workspace"):
         self.workspace = Path(workspace)
         self.workspace.mkdir(parents=True, exist_ok=True)
         self.protected_files_full = [self.workspace / pf for pf in self.PROTECTED_FILES]

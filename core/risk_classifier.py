@@ -1,5 +1,5 @@
 """
-OpenClaw Risk Classifier
+Baronet Risk Classifier
 Rule-based risk assessment - NOT AI judgment
 CRITICAL: AI cannot judge its own risk level
 """
@@ -165,7 +165,7 @@ class PlanRiskClassifier:
         # Absolute path indicators
         if args_str.count(':\\') > 0 or args_str.count(':/') > 0:
             # Has drive letter
-            if 'c:\\openclaw' not in args_str:
+            if 'c:\\baronet' not in args_str:
                 return True
         
         return False

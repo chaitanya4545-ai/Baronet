@@ -17,11 +17,11 @@ def rename_in_file(filepath):
         if content != new_content:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(new_content)
-            print(f"✓ Updated: {filepath}")
+            print(f"[OK] Updated: {filepath}")
             return True
         return False
     except Exception as e:
-        print(f"✗ Error in {filepath}: {e}")
+        print(f"[ERROR] in {filepath}: {e}")
         return False
 
 # Directories to process
@@ -49,4 +49,4 @@ for filename in root_files:
         if rename_in_file(filepath):
             updated_count += 1
 
-print(f"\n✅ Renamed {updated_count} files")
+print(f"\n[DONE] Renamed {updated_count} files")

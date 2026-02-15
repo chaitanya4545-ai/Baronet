@@ -1,9 +1,9 @@
 """
-Quick test of OpenClaw AI integration
+Quick test of Baronet AI integration
 Tests ollama_client with all safety layers
 """
 import sys
-sys.path.insert(0, 'C:\\OpenClaw')
+sys.path.insert(0, 'C:\\Baronet')
 
 from core.ollama_client import ollama_client
 from core.schema_validator import schema_validator
@@ -11,7 +11,7 @@ from core.risk_classifier import risk_classifier
 from core.semantic_guard import semantic_guard
 
 print("=" * 60)
-print("OpenClaw Phase 2 Integration Test")
+print("Baronet Phase 2 Integration Test")
 print("=" * 60)
 
 # Test 1: Check Ollama availability

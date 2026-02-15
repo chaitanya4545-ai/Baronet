@@ -1,5 +1,5 @@
 """
-OpenClaw CLI Interface
+Baronet CLI Interface
 Command-line interface for direct control
 """
 import click
@@ -9,7 +9,7 @@ from rich.panel import Panel
 from rich import print as rprint
 import json
 
-from core.openclaw import openclaw
+from core.baronet import baronet
 from core.logger import log
 from core.safety import safety
 from core.ai_handler import create_ai_handler
@@ -19,10 +19,10 @@ console = Console()
 
 
 @click.group()
-@click.version_option(version="0.1.0-phase1", prog_name="OpenClaw")
+@click.version_option(version="0.1.0-phase1", prog_name="Baronet")
 def cli():
     """
-    OpenClaw - Personal Automation Engine
+    Baronet - Personal Automation Engine
     
     Your central nervous system for automation tasks.
     """
@@ -31,11 +31,11 @@ def cli():
 
 @cli.command()
 def status():
-    """Show OpenClaw system status"""
-    status_data = openclaw.get_status()
+    """Show Baronet system status"""
+    status_data = baronet.get_status()
     
     panel = Panel(
-        f"""[bold cyan]OpenClaw v{status_data['version']}[/bold cyan]
+        f"""[bold cyan]Baronet v{status_data['version']}[/bold cyan]
         
 [yellow]Modules:[/yellow] {', '.join(status_data['modules'])}
 [yellow]Workspace:[/yellow] {status_data['workspace']}
@@ -51,7 +51,7 @@ def status():
 @cli.command()
 def help_commands():
     """List all available commands"""
-    help_data = openclaw.get_help()
+    help_data = baronet.get_help()
     
     table = Table(title="Available Commands", show_header=True, header_style="bold magenta")
     table.add_column("Module", style="cyan")
@@ -80,7 +80,7 @@ def create(filename, content):
         'args': {'filename': filename, 'content': content}
     }
     
-    result = openclaw.execute(command)
+    result = baronet.execute(command)
     
     if result['success']:
         console.print(f"[green]✓[/green] Created: {result['path']}")
@@ -99,7 +99,7 @@ def read(filename):
         'args': {'filename': filename}
     }
     
-    result = openclaw.execute(command)
+    result = baronet.execute(command)
     
     if result['success']:
         console.print(Panel(
@@ -123,7 +123,7 @@ def write(filename, content):
         'args': {'filename': filename, 'content': content}
     }
     
-    result = openclaw.execute(command)
+    result = baronet.execute(command)
     
     if result['success']:
         console.print(f"[green]✓[/green] Written: {result['path']}")
@@ -143,7 +143,7 @@ def delete(filename):
         'args': {'filename': filename}
     }
     
-    result = openclaw.execute(command)
+    result = baronet.execute(command)
     
     if result['success']:
         console.print(f"[yellow]🗑️[/yellow] Deleted: {result['path']}")
@@ -162,7 +162,7 @@ def list(directory):
         'args': {'directory': directory}
     }
     
-    result = openclaw.execute(command)
+    result = baronet.execute(command)
     
     if result['success']:
         table = Table(title=f"📁 {result['path']}", show_header=True)
@@ -197,7 +197,7 @@ def info(filename):
         'args': {'filename': filename}
     }
     
-    result = openclaw.execute(command)
+    result = baronet.execute(command)
     
     if result['success']:
         info_text = f"""[yellow]Path:[/yellow] {result['path']}
@@ -218,7 +218,7 @@ def emergency_stop():
     safety.activate_emergency_stop()
     console.print("[red]🚨 EMERGENCY STOP ACTIVATED[/red]")
     console.print("All operations are now blocked.")
-    console.print("Use 'openclaw resume' to deactivate.")
+    console.print("Use 'baronet resume' to deactivate.")
 
 
 @cli.command()
@@ -236,15 +236,15 @@ def ai(natural_language):
     Execute command using AI natural language parsing
     
     Example:
-        openclaw ai create a test file with hello world
-        openclaw ai list all files in workspace
-        openclaw ai delete old backup files
+        baronet ai create a test file with hello world
+        baronet ai list all files in workspace
+        baronet ai delete old backup files
     """
     # Join multi-word input
     user_input = ' '.join(natural_language)
     
     # Create AI handler
-    workspace = Path(openclaw.modules['file'].workspace)
+    workspace = Path(baronet.modules['file'].workspace)
     handler = create_ai_handler(workspace)
     
     # Check if AI is available
@@ -277,7 +277,7 @@ def ai(natural_language):
     
     # Execute command
     console.print("\n[dim]Executing...[/dim]")
-    exec_result = openclaw.execute(result['command'])
+    exec_result = baronet.execute(result['command'])
     
     # Show result
     if exec_result['success']:

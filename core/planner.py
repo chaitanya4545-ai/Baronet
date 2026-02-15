@@ -1,5 +1,5 @@
 """
-OpenClaw Multi-Step Planner
+Baronet Multi-Step Planner
 Generates and validates multi-step automation plans
 CRITICAL: Plans go through ALL safety validators
 """
@@ -150,7 +150,7 @@ class MultiStepPlanner:
                 'error': Optional[str]
             }
         """
-        from core.openclaw import openclaw
+        from core.baronet import baronet
         
         execution_result = {
             'success': False,
@@ -170,7 +170,7 @@ class MultiStepPlanner:
             
             # Execute step
             try:
-                result = openclaw.execute(step)
+                result = baronet.execute(step)
                 execution_result['results'].append(result)
                 
                 # Notify step complete

@@ -1,5 +1,5 @@
 """
-OpenClaw Ollama Client
+Baronet Ollama Client
 Isolated LLM interface with strict JSON contracts
 CRITICAL: AI suggests, never executes
 """
@@ -28,7 +28,7 @@ class OllamaClient:
         }
     }
     
-    PROMPT_TEMPLATE = """You are a command parser for OpenClaw file automation system.
+    PROMPT_TEMPLATE = """You are a command parser for Baronet file automation system.
 
 Your ONLY job is to parse natural language into structured commands.
 You MUST output ONLY valid JSON, no explanations, no markdown.

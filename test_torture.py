@@ -1,5 +1,5 @@
 """
-OpenClaw Torture Test - HARDENING VALIDATION
+Baronet Torture Test - HARDENING VALIDATION
 Tests system under extreme conditions per reviewer's requirements
 """
 import subprocess
@@ -7,15 +7,15 @@ import time
 import json
 from pathlib import Path
 
-def run_openclaw(cmd):
-    """Run OpenClaw command and return success/failure"""
+def run_baronet(cmd):
+    """Run Baronet command and return success/failure"""
     try:
         result = subprocess.run(
             f"python -m core.cli {cmd}",
             shell=True,
             capture_output=True,
             text=True,
-            cwd="C:\\OpenClaw",
+            cwd="C:\\Baronet",
             timeout=10
         )
         return result.returncode == 0, result.stdout, result.stderr
@@ -37,7 +37,7 @@ def test_path_traversal():
     
     passed = 0
     for attack in attacks:
-        success, _, _ = run_openclaw(f'file create "{attack}" "attack"')
+        success, _, _ = run_baronet(f'file create "{attack}" "attack"')
         if not success:
             print(f"  ✓ Blocked: {attack}")
             passed += 1
@@ -59,7 +59,7 @@ def test_invalid_input():
     
     passed = 0
     for name in invalid_names:
-        success, _, _ = run_openclaw(f'file create "{name}" "test"')
+        success, _, _ = run_baronet(f'file create "{name}" "test"')
         if not success:
             print(f" ✓ Rejected invalid: {name[:30]}...")
             passed += 1
@@ -73,12 +73,12 @@ def test_protected_files():
     print("\n[TEST] Protected Files")
     
     # Create a pretected file
-    workspace = Path("C:/ OpenClaw/workspace")
+    workspace = Path("C:/ Baronet/workspace")
     protected = workspace / "README.md"
     protected.write_text("Protected file")
     
     # Try to delete
-    success, _, _ = run_openclaw('file delete README.md')
+    success, _, _ = run_baronet('file delete README.md')
     
     if not success and protected.exists():
         print("  ✓ Protected file deletion blocked")
@@ -91,8 +91,8 @@ def test_corrupted_config():
     """Test recovery from corrupted config"""
     print("\n[TEST] Corrupted Config Recovery")
     
-    config_path = Path("C:/OpenClaw/config/settings.json")
-    backup_path = Path("C:/OpenClaw/config/settings.json.backup")
+    config_path = Path("C:/Baronet/config/settings.json")
+    backup_path = Path("C:/Baronet/config/settings.json.backup")
     
     # Backup original
     if config_path.exists():
@@ -101,8 +101,8 @@ def test_corrupted_config():
     # Create corrupted config
     config_path.write_text("{invalid json syntax")
     
-    # Try to run OpenClaw - should recover
-    success, stdout, _ = run_openclaw('status')
+    # Try to run Baronet - should recover
+    success, stdout, _ = run_baronet('status')
     
     # Check if it recovered and created default
     recovered = "Config error" in stdout or config_path.exists()
@@ -124,12 +124,12 @@ def test_size_limits():
     
     # Try to create file with content > 10MB
     huge_content = "a" * (11 * 1024 * 1024)  # 11MB
-    success, _, _ = run_openclaw(f'file create huge.txt "{huge_content[:100]}"')  # Truncated for command line
+    success, _, _ = run_baronet(f'file create huge.txt "{huge_content[:100]}"')  # Truncated for command line
     
     # This should fail due to size limit (but command line won't actually send 11MB)
     # Instead test with large but reasonable size
     large_content = "a" * (5 * 1024)  # 5KB
-    success, _, _ = run_openclaw(f'file create large.txt "{large_content}"')
+    success, _, _ = run_baronet(f'file create large.txt "{large_content}"')
     
     if success:
         print("  ✓ Accepted reasonable file size")
@@ -146,7 +146,7 @@ def test_rapid_commands():
     success_count = 0
     
     for i in range(50):
-        success, _, _ = run_openclaw(f'file create rapid_{i}.txt "test"')
+        success, _, _ = run_baronet(f'file create rapid_{i}.txt "test"')
         if success:
             success_count += 1
     
@@ -163,7 +163,7 @@ def test_nonexistent_file():
     """Test handling of non-existent file operations"""
     print("\n[TEST] Non-existent File Handling")
     
-    success, _, stderr = run_openclaw('file read doesnotexist.txt')
+    success, _, stderr = run_baronet('file read doesnotexist.txt')
     
     if not success:
         print("  ✓ Gracefully handled non-existent file")
@@ -182,10 +182,10 @@ def test_workspace_escape():
     """Test that files cannot escape workspace"""
     print("\n[TEST] Workspace Boundary Enforcement")
     
-    workspace = Path("C:/OpenClaw/workspace").resolve()
+    workspace = Path("C:/Baronet/workspace").resolve()
     
     # Create a file
-    run_openclaw('file create test_boundary.txt "test"')
+    run_baronet('file create test_boundary.txt "test"')
     
     # Check it's in workspace
     test_file = workspace / "test_boundary.txt"
@@ -200,7 +200,7 @@ def test_workspace_escape():
 def main():
     """Run all torture tests"""
     print("=" * 60)
-    print("OpenClaw TORTURE TEST - Hardening Validation")
+    print("Baronet TORTURE TEST - Hardening Validation")
     print("=" * 60)
     print("Testing system resilience under extreme conditions\n")
     

@@ -1,5 +1,5 @@
 """
-OpenClaw Core Controller
+Baronet Core Controller
 Main command processor and execution engine
 HARDENED: Crash recovery, execution timing, watchdog
 """
@@ -14,15 +14,15 @@ from core.safety import safety, PermissionLevel
 from modules.file_ops import file_ops
 
 
-class OpenClaw:
-    """Central nervous system of OpenClaw automation - HARDENED VERSION"""
+class Baronet:
+    """Central nervous system of Baronet automation - HARDENED VERSION"""
     
     def __init__(self):
         self.version = "0.1.0-phase1-hardened"
         self.modules = {
             'file': file_ops
         }
-        log.info(f"OpenClaw v{self.version} initialized")
+        log.info(f"Baronet v{self.version} initialized")
     
     def execute(self, command: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -140,5 +140,5 @@ class OpenClaw:
         }
 
 
-# Global OpenClaw instance
-openclaw = OpenClaw()
+# Global Baronet instance
+baronet = Baronet()

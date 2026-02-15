@@ -1,5 +1,5 @@
 """
-OpenClaw Safety System
+Baronet Safety System
 Permission checks, rate limiting, and safety guardrails
 """
 from enum import IntEnum
@@ -19,7 +19,7 @@ class PermissionLevel(IntEnum):
 
 
 class SafetyGuard:
-    """Safety system for OpenClaw operations - HARDENED VERSION"""
+    """Safety system for Baronet operations - HARDENED VERSION"""
     
     # HARDENING: Watchdog and execution limits
     MAX_EXECUTION_TIME = 300  # 5 minutes per command

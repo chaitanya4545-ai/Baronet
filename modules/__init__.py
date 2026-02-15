@@ -1,1 +1,1 @@
-"""OpenClaw Modules Package"""
+"""Baronet Modules Package"""

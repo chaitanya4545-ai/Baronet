@@ -13,9 +13,9 @@ class TestSemanticGuard:
         """Explicit user-mentioned paths should be allowed"""
         command = {
             'operation': 'read',
-            'args': {'filename': 'C:\\OpenClaw\\workspace\\test.txt'}
+            'args': {'filename': 'C:\\Baronet\\workspace\\test.txt'}
         }
-        user_input = "read C:\\OpenClaw\\workspace\\test.txt"
+        user_input = "read C:\\Baronet\\workspace\\test.txt"
         
         safe, reason = semantic_guard.check_command(command, user_input)
         assert safe is True

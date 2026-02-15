@@ -1,5 +1,5 @@
 """
-OpenClaw Semantic Guard
+Baronet Semantic Guard
 Prevents implicit dangerous expansions and prompt injections
 CRITICAL: Block innocent-looking dangerous commands
 """
@@ -37,7 +37,7 @@ class SemanticGuard:
     ]
     
     def __init__(self):
-        self.workspace_path = 'C:\\OpenClaw\\workspace'
+        self.workspace_path = 'C:\\Baronet\\workspace'
     
     def check_command(self, command: Dict[str, Any], user_input: str) -> Tuple[bool, Optional[str]]:
         """

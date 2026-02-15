@@ -1,5 +1,5 @@
 """
-OpenClaw Logger
+Baronet Logger
 Handles all logging with rotation, levels, and formatting
 """
 from loguru import logger
@@ -8,8 +8,8 @@ from pathlib import Path
 from datetime import datetime
 
 
-class OpenClawLogger:
-    """Centralized logging system for OpenClaw"""
+class BaronetLogger:
+    """Centralized logging system for Baronet"""
     
     def __init__(self, log_dir: str = "logs"):
         self.log_dir = Path(log_dir)
@@ -28,7 +28,7 @@ class OpenClawLogger:
         
         # File output with rotation
         logger.add(
-            self.log_dir / "openclaw_{time:YYYY-MM-DD}.log",
+            self.log_dir / "baronet_{time:YYYY-MM-DD}.log",
             format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {message}",
             level="DEBUG",
             rotation="00:00",  # New file each day
@@ -72,4 +72,4 @@ class OpenClawLogger:
 
 
 # Global logger instance
-log = OpenClawLogger()
+log = BaronetLogger()

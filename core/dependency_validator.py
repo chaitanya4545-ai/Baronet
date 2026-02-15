@@ -1,5 +1,5 @@
 """
-OpenClaw Dependency Validator
+Baronet Dependency Validator
 Checks if operations have unmet prerequisites
 CRITICAL: Prevents logical contradictions in AI plans
 """
