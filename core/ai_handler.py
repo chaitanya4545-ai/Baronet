@@ -7,6 +7,7 @@ from pathlib import Path
 
 from core.logger import log
 from core.ollama_client import ollama_client, OllamaUnavailable, ParsingError
+from core.remote_llm import remote_llm
 from core.schema_validator import schema_validator
 from core.semantic_guard import semantic_guard
 from core.risk_classifier import risk_classifier, RiskLevel
@@ -55,12 +56,30 @@ class AICommandHandler:
         
         # Step 2: Parse with AI
         try:
-            parsed = ollama_client.parse_command(sanitized)
+            if ollama_client.check_availability():
+                parsed = ollama_client.parse_command(sanitized)
+            elif remote_llm.check_availability():
+                log.info("Ollama not available, falling back to Remote LLM (Groq)")
+                parsed = remote_llm.parse_command(sanitized)
+            else:
+                result['error'] = "⚠️  No LLM provider available (Ollama or Remote)"
+                return result
         except OllamaUnavailable as e:
-            result['error'] = f"⚠️  Ollama not available: {e}"
-            return result
+            if remote_llm.check_availability():
+                log.info("Ollama unavailable, falling back to Remote LLM")
+                try:
+                    parsed = remote_llm.parse_command(sanitized)
+                except Exception as ex:
+                    result['error'] = f"⚠️  Remote LLM failed: {ex}"
+                    return result
+            else:
+                result['error'] = f"⚠️  Ollama not available: {e}"
+                return result
         except ParsingError as e:
             result['error'] = f"⚠️  Failed to parse command: {e}"
+            return result
+        except Exception as e:
+            result['error'] = f"⚠️  Unexpected LLM error: {e}"
             return result
         
         result['command'] = parsed
