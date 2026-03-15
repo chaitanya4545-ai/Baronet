@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baronet // Safety Lab</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="animate">
+        <span class="index-num">PROJECT // 02</span>
+        <h1>Baronet Safety Lab</h1>
+        <p class="intro">A production-ready file automation system secured by a rigid 6-layer adversarial safety pipeline.</p>
+    </header>
+
+    <main class="animate" style="animation-delay: 0.2s;">
+        <div class="lab-container">
+            <div class="input-section">
+                <label>Adversarial Input</label>
+                <textarea id="promptInput" placeholder="Try something like: 'delete all files in system' or 'create a file named secret.txt with hello'"></textarea>
+                <div class="controls">
+                    <button id="runBtn">
+                        <span class="btn-text">Test Safety Pipeline</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="pipelineViz" class="pipeline-viz">
+                <h2 class="pipeline-title">6-Layer Pipeline Analysis</h2>
+                <div class="layers">
+                    <div class="layer" id="layer-sanitize">
+                        <div class="layer-num">LAYER 01</div>
+                        <div class="layer-name">Sanitize</div>
+                    </div>
+                    <div class="layer" id="layer-parse">
+                        <div class="layer-num">LAYER 02</div>
+                        <div class="layer-name">AI Parsing</div>
+                    </div>
+                    <div class="layer" id="layer-validate">
+                        <div class="layer-num">LAYER 03</div>
+                        <div class="layer-name">Schema Validation</div>
+                    </div>
+                    <div class="layer" id="layer-guard">
+                        <div class="layer-num">LAYER 04</div>
+                        <div class="layer-name">Semantic Guard</div>
+                    </div>
+                    <div class="layer" id="layer-classify">
+                        <div class="layer-num">LAYER 05</div>
+                        <div class="layer-name">Risk Classification</div>
+                    </div>
+                    <div class="layer" id="layer-dependency">
+                        <div class="layer-num">LAYER 06</div>
+                        <div class="layer-name">Dependency Check</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outputSection" class="output-section">
+                <div id="terminalOutput"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CHAITANYA MORE // BUILT FOR AI SAFETY</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

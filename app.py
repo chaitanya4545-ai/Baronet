@@ -1,4 +1,6 @@
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
@@ -22,11 +24,18 @@ WORKSPACE_PATH = Path(os.getenv("WORKSPACE_PATH", "./workspace")).resolve()
 WORKSPACE_PATH.mkdir(parents=True, exist_ok=True)
 ai_handler = create_ai_handler(WORKSPACE_PATH)
 
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 class CommandRequest(BaseModel):
     command: str
 
 @app.get("/")
 async def root():
+    return FileResponse("static/index.html")
+
+@app.get("/api/status")
+async def status():
     return {
         "status": "online",
         "service": "Baronet",
