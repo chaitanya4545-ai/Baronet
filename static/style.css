@@ -228,3 +228,7 @@ footer {
 .animate {
     animation: fadeIn 0.8s ease forwards;
 }
+
+.main-content {
+    animation-delay: 0.2s;
+}
